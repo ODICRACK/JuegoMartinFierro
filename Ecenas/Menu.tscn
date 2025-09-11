@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgfjemoqlmi4c"]
+[gd_scene load_steps=4 format=3 uid="uid://cgfjemoqlmi4c"]
 
+[ext_resource type="Texture2D" uid="uid://suw5g8gilx57" path="res://Sprites/pixel_guitar_transparent.png" id="2_q4tns"]
 [ext_resource type="Texture2D" uid="uid://xr304ynpsl4y" path="res://Sprites/ChatGPT Image 10 sept 2025, 09_58_40 p.m..png" id="2_sp3bm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jxnki"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -15,12 +18,36 @@ scale = Vector2(0.8, 0.8)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
 offset_left = -798.75
 offset_top = -502.75
 offset_right = 801.25
 offset_bottom = 521.25
-grow_vertical = 2
 pivot_offset = Vector2(768, 512)
 texture = ExtResource("2_sp3bm")
+
+[node name="PixelGuitarTransparent" type="Sprite2D" parent="."]
+position = Vector2(-32.5, 40)
+scale = Vector2(0.766714, 0.772322)
+texture = ExtResource("2_q4tns")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = -207.0
+offset_right = 173.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 41
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 65
+theme_override_styles/normal = SubResource("StyleBoxEmpty_jxnki")
+text = "play"
