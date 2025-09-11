@@ -1,0 +1,13 @@
+extends CanvasLayer
+@onready var fade_rect = $ColorRect
+
+func _on_fade_finished():
+	print("se terminó el fundido")
+	# Acá podés poner la acción que quieras (cambio de escena, etc.)
+
+func _on_buttonquit_pressed() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(fade_rect, "modulate:a", 1.0, 1.0) # 1 seg de duración
+	# Usamos await para esperar a que termine
+	await tween.finished
+	_on_fade_finished()
