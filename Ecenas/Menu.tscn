@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cgfjemoqlmi4c"]
+[gd_scene load_steps=30 format=3 uid="uid://cgfjemoqlmi4c"]
 
 [ext_resource type="Script" uid="uid://dj2bfxhryngup" path="res://Ecenas/menu.gd" id="1_l03gm"]
 [ext_resource type="Script" uid="uid://btsof2u5bukff" path="res://Ecenas/buttonContainer.gd" id="2_4y11p"]
@@ -10,11 +10,13 @@
 [ext_resource type="AudioStream" uid="uid://bo85gkbjrcofn" path="res://Sonidos/guitarra3.wav" id="6_qe5y5"]
 [ext_resource type="Script" uid="uid://q6y37fsfhxpr" path="res://Ecenas/quitarJuego.gd" id="7_c7k86"]
 [ext_resource type="AudioStream" uid="uid://cvvmtq3ou05ir" path="res://Sonidos/guitarra2.wav" id="7_cxlyq"]
+[ext_resource type="AudioStream" uid="uid://bmqa2prjowc20" path="res://Sonidos/guitarra triste entrada.wav" id="9_7hgs6"]
 [ext_resource type="AudioStream" uid="uid://cwkncq8ha2fj1" path="res://Sonidos/817421__sergequadrado__lucky-guitar-sound.wav" id="9_jwk51"]
 [ext_resource type="Script" uid="uid://b7hkk70egcr43" path="res://Ecenas/fundidor.gd" id="11_7gcih"]
 [ext_resource type="LabelSettings" uid="uid://b1amam61a18ec" path="res://Recursos/RecursosDeTexto/Titulos.tres" id="13_vk7wb"]
 [ext_resource type="LabelSettings" uid="uid://c7xl3dh7a486s" path="res://Recursos/RecursosDeTexto/SubTitulos.tres" id="14_dmw4f"]
 [ext_resource type="LabelSettings" uid="uid://ds8witkhs7v0u" path="res://Recursos/RecursosDeTexto/SubSubTitulo.tres" id="15_fpkfv"]
+[ext_resource type="Script" uid="uid://bv1a8si5x765y" path="res://Ecenas/Volumen.gd" id="15_qboup"]
 [ext_resource type="Texture2D" uid="uid://c7bobl4fbukm6" path="res://Sprites/boton.png" id="16_7hgs6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7k86"]
@@ -24,6 +26,21 @@ draw_center = false
 draw_center = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jxnki"]
+
+[sub_resource type="Animation" id="Animation_j0vat"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/guitar abajo:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_pl8sq"]
 resource_name = "guitarMove"
@@ -40,21 +57,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [2, 4, 6, 0]
-}
-
-[sub_resource type="Animation" id="Animation_j0vat"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control/guitar abajo:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qe5y5"]
@@ -116,6 +118,7 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -193,9 +196,11 @@ libraries = {
 [node name="Guitarra" type="AudioStreamPlayer" parent="VBoxContainer/ContenedorBotonPlay"]
 stream = ExtResource("5_pl8sq")
 volume_db = 4.0
+bus = &"SFX"
 
 [node name="chao" type="AudioStreamPlayer" parent="VBoxContainer/ContenedorBotonPlay"]
-stream = ExtResource("9_jwk51")
+stream = ExtResource("9_7hgs6")
+bus = &"SFX"
 
 [node name="ContenedorBotonOptions" type="Control" parent="VBoxContainer"]
 layout_mode = 2
@@ -258,6 +263,7 @@ libraries = {
 [node name="Guitarra" type="AudioStreamPlayer" parent="VBoxContainer/ContenedorBotonOptions"]
 stream = ExtResource("6_qe5y5")
 volume_db = 2.0
+bus = &"SFX"
 
 [node name="ContenedorBotonQuit" type="Control" parent="VBoxContainer"]
 layout_mode = 2
@@ -321,12 +327,13 @@ libraries = {
 [node name="Guitarra" type="AudioStreamPlayer" parent="VBoxContainer/ContenedorBotonQuit"]
 stream = ExtResource("7_cxlyq")
 volume_db = -2.0
+bus = &"SFX"
 
 [node name="chao" type="AudioStreamPlayer" parent="VBoxContainer/ContenedorBotonQuit"]
 stream = ExtResource("9_jwk51")
+bus = &"SFX"
 
 [node name="opciones" type="Control" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -353,7 +360,7 @@ offset_bottom = 448.5
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="opciones/opciones de lado"]
+[node name="contenedorOpciones" type="VBoxContainer" parent="opciones/opciones de lado"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -361,76 +368,78 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -692.0
-offset_top = -256.5
-offset_bottom = 447.5
+offset_top = -286.5
+offset_bottom = 448.5
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 0
 
-[node name="Titulo" type="Label" parent="opciones/opciones de lado/VBoxContainer"]
+[node name="Titulo" type="Label" parent="opciones/opciones de lado/contenedorOpciones"]
 layout_mode = 2
 text = "opciones"
 label_settings = ExtResource("13_vk7wb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VolumenContenedor" type="VBoxContainer" parent="opciones/opciones de lado/VBoxContainer"]
+[node name="VolumenContenedor" type="VBoxContainer" parent="opciones/opciones de lado/contenedorOpciones"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_constants/separation = 23
+theme_override_constants/separation = 13
+script = ExtResource("15_qboup")
 
-[node name="Label" type="Label" parent="opciones/opciones de lado/VBoxContainer/VolumenContenedor"]
+[node name="Label" type="Label" parent="opciones/opciones de lado/contenedorOpciones/VolumenContenedor"]
 layout_mode = 2
 text = "Volumen           "
 label_settings = ExtResource("14_dmw4f")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="opciones/opciones de lado/VBoxContainer/VolumenContenedor"]
+[node name="Label2" type="Label" parent="opciones/opciones de lado/contenedorOpciones/VolumenContenedor"]
 layout_mode = 2
 text = "Musica"
 label_settings = ExtResource("14_dmw4f")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="opciones/opciones de lado/VBoxContainer/VolumenContenedor"]
+[node name="Musica" type="HSlider" parent="opciones/opciones de lado/contenedorOpciones/VolumenContenedor"]
 layout_mode = 2
 theme_override_styles/slider = SubResource("StyleBoxLine_l03gm")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_l03gm")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_rybku")
-min_value = -20.0
-max_value = 20.0
+min_value = -40.0
+max_value = 10.0
 
-[node name="Label3" type="Label" parent="opciones/opciones de lado/VBoxContainer/VolumenContenedor"]
+[node name="Label3" type="Label" parent="opciones/opciones de lado/contenedorOpciones/VolumenContenedor"]
 layout_mode = 2
 text = "Sonido"
 label_settings = ExtResource("14_dmw4f")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSlider2" type="HSlider" parent="opciones/opciones de lado/VBoxContainer/VolumenContenedor"]
+[node name="Efectos" type="HSlider" parent="opciones/opciones de lado/contenedorOpciones/VolumenContenedor"]
 layout_mode = 2
 theme_override_styles/slider = SubResource("StyleBoxLine_l03gm")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_l03gm")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_rybku")
-min_value = -20.0
-max_value = 20.0
+min_value = -40.0
+max_value = 15.0
+value = -10.0
 
-[node name="teclas" type="VBoxContainer" parent="opciones/opciones de lado/VBoxContainer"]
+[node name="teclas" type="VBoxContainer" parent="opciones/opciones de lado/contenedorOpciones"]
 layout_mode = 2
 theme_override_constants/separation = 21
 
-[node name="tecla" type="HBoxContainer" parent="opciones/opciones de lado/VBoxContainer/teclas"]
+[node name="tecla" type="HBoxContainer" parent="opciones/opciones de lado/contenedorOpciones/teclas"]
 layout_mode = 2
 theme_override_constants/separation = 115
 
-[node name="Label" type="Label" parent="opciones/opciones de lado/VBoxContainer/teclas/tecla"]
+[node name="Label" type="Label" parent="opciones/opciones de lado/contenedorOpciones/teclas/tecla"]
 layout_mode = 2
 text = "Izquierda"
 label_settings = ExtResource("15_fpkfv")
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="opciones/opciones de lado/VBoxContainer/teclas/tecla"]
+[node name="Button" type="Button" parent="opciones/opciones de lado/contenedorOpciones/teclas/tecla"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_4y11p")
 theme_override_font_sizes/font_size = 45
@@ -442,17 +451,17 @@ text = "A"
 icon_alignment = 1
 expand_icon = true
 
-[node name="tecla2" type="HBoxContainer" parent="opciones/opciones de lado/VBoxContainer/teclas"]
+[node name="tecla2" type="HBoxContainer" parent="opciones/opciones de lado/contenedorOpciones/teclas"]
 layout_mode = 2
 theme_override_constants/separation = 142
 
-[node name="Label" type="Label" parent="opciones/opciones de lado/VBoxContainer/teclas/tecla2"]
+[node name="Label" type="Label" parent="opciones/opciones de lado/contenedorOpciones/teclas/tecla2"]
 layout_mode = 2
 text = "derecha"
 label_settings = ExtResource("15_fpkfv")
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="opciones/opciones de lado/VBoxContainer/teclas/tecla2"]
+[node name="Button" type="Button" parent="opciones/opciones de lado/contenedorOpciones/teclas/tecla2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_4y11p")
 theme_override_font_sizes/font_size = 45
@@ -464,17 +473,17 @@ text = "D"
 icon_alignment = 1
 expand_icon = true
 
-[node name="tecla3" type="HBoxContainer" parent="opciones/opciones de lado/VBoxContainer/teclas"]
+[node name="tecla3" type="HBoxContainer" parent="opciones/opciones de lado/contenedorOpciones/teclas"]
 layout_mode = 2
 theme_override_constants/separation = 179
 
-[node name="Label" type="Label" parent="opciones/opciones de lado/VBoxContainer/teclas/tecla3"]
+[node name="Label" type="Label" parent="opciones/opciones de lado/contenedorOpciones/teclas/tecla3"]
 layout_mode = 2
 text = "Arriba"
 label_settings = ExtResource("15_fpkfv")
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="opciones/opciones de lado/VBoxContainer/teclas/tecla3"]
+[node name="Button" type="Button" parent="opciones/opciones de lado/contenedorOpciones/teclas/tecla3"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_4y11p")
 theme_override_font_sizes/font_size = 45
@@ -486,17 +495,17 @@ text = "W"
 icon_alignment = 1
 expand_icon = true
 
-[node name="tecla4" type="HBoxContainer" parent="opciones/opciones de lado/VBoxContainer/teclas"]
+[node name="tecla4" type="HBoxContainer" parent="opciones/opciones de lado/contenedorOpciones/teclas"]
 layout_mode = 2
 theme_override_constants/separation = 195
 
-[node name="Label" type="Label" parent="opciones/opciones de lado/VBoxContainer/teclas/tecla4"]
+[node name="Label" type="Label" parent="opciones/opciones de lado/contenedorOpciones/teclas/tecla4"]
 layout_mode = 2
 text = "Abajo"
 label_settings = ExtResource("15_fpkfv")
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="opciones/opciones de lado/VBoxContainer/teclas/tecla4"]
+[node name="Button" type="Button" parent="opciones/opciones de lado/contenedorOpciones/teclas/tecla4"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_4y11p")
 theme_override_font_sizes/font_size = 45
@@ -508,17 +517,17 @@ text = "S"
 icon_alignment = 1
 expand_icon = true
 
-[node name="tecla5" type="HBoxContainer" parent="opciones/opciones de lado/VBoxContainer/teclas"]
+[node name="tecla5" type="HBoxContainer" parent="opciones/opciones de lado/contenedorOpciones/teclas"]
 layout_mode = 2
 theme_override_constants/separation = 66
 
-[node name="Label" type="Label" parent="opciones/opciones de lado/VBoxContainer/teclas/tecla5"]
+[node name="Label" type="Label" parent="opciones/opciones de lado/contenedorOpciones/teclas/tecla5"]
 layout_mode = 2
 text = "Tirar objeto"
 label_settings = ExtResource("15_fpkfv")
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="opciones/opciones de lado/VBoxContainer/teclas/tecla5"]
+[node name="Button" type="Button" parent="opciones/opciones de lado/contenedorOpciones/teclas/tecla5"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_4y11p")
 theme_override_font_sizes/font_size = 45
@@ -531,6 +540,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="retroceder" type="Button" parent="opciones"]
+layout_mode = 0
 offset_left = 34.0
 offset_top = 20.0
 offset_right = 159.0
@@ -546,6 +556,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="troleo" type="Button" parent="opciones"]
+layout_mode = 0
 offset_left = 35.5
 offset_top = 752.0
 offset_right = 217.5
@@ -562,13 +573,16 @@ expand_icon = true
 
 [connection signal="mouse_entered" from="VBoxContainer/ContenedorBotonPlay/ButtonPlay" to="VBoxContainer/ContenedorBotonPlay/Control" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/ContenedorBotonPlay/ButtonPlay" to="VBoxContainer/ContenedorBotonPlay/Control" method="_on_button_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/ContenedorBotonPlay/ButtonPlay" to="CanvasLayer" method="_on_button_play_pressed"]
 [connection signal="pressed" from="VBoxContainer/ContenedorBotonPlay/ButtonPlay" to="VBoxContainer/ContenedorBotonPlay/ButtonPlay" method="_on_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/ContenedorBotonOptions/ButtonOptions" to="VBoxContainer/ContenedorBotonOptions/Control" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/ContenedorBotonOptions/ButtonOptions" to="VBoxContainer/ContenedorBotonOptions/Control" method="_on_button_mouse_exited"]
 [connection signal="pressed" from="VBoxContainer/ContenedorBotonOptions/ButtonOptions" to="." method="_on_button_options_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/ContenedorBotonQuit/Buttonquit" to="VBoxContainer/ContenedorBotonQuit/Control" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/ContenedorBotonQuit/Buttonquit" to="VBoxContainer/ContenedorBotonQuit/Control" method="_on_button_mouse_exited"]
-[connection signal="pressed" from="VBoxContainer/ContenedorBotonQuit/Buttonquit" to="VBoxContainer/ContenedorBotonQuit/Buttonquit" method="_on_pressed"]
 [connection signal="pressed" from="VBoxContainer/ContenedorBotonQuit/Buttonquit" to="CanvasLayer" method="_on_buttonquit_pressed"]
+[connection signal="pressed" from="VBoxContainer/ContenedorBotonQuit/Buttonquit" to="VBoxContainer/ContenedorBotonQuit/Buttonquit" method="_on_pressed"]
 [connection signal="finished" from="VBoxContainer/ContenedorBotonQuit/chao" to="VBoxContainer/ContenedorBotonQuit/Buttonquit" method="_on_chao_finished"]
+[connection signal="value_changed" from="opciones/opciones de lado/contenedorOpciones/VolumenContenedor/Musica" to="opciones/opciones de lado/contenedorOpciones/VolumenContenedor" method="_on_music_volume_changed"]
+[connection signal="value_changed" from="opciones/opciones de lado/contenedorOpciones/VolumenContenedor/Efectos" to="opciones/opciones de lado/contenedorOpciones/VolumenContenedor" method="_on_sfx_volume_changed"]
 [connection signal="pressed" from="opciones/retroceder" to="." method="_on_button_options_pressed"]

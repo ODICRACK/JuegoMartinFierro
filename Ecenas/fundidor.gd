@@ -11,3 +11,11 @@ func _on_buttonquit_pressed() -> void:
 	# Usamos await para esperar a que termine
 	await tween.finished
 	_on_fade_finished()
+
+
+func _on_button_play_pressed() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(fade_rect, "modulate:a", 1.0, 5.0) # 1 seg de duración
+	# Usamos await para esperar a que termine
+	await tween.finished
+	_on_fade_finished()
