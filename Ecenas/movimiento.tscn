@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8xf785erknay"]
+
+[ext_resource type="Script" uid="uid://c66he8moxsg0" path="res://scrips/movimiento.gd" id="1_1ok0o"]
+
+[node name="movimiento" type="Node"]
+script = ExtResource("1_1ok0o")

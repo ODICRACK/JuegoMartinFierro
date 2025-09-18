@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://33s1pwdq1kwb"
-path="res://.godot/imported/boton.png-f352b1540d05c64b51fdd3fb51e1820d.ctex"
+uid="uid://cj70m3ayui60m"
+path="res://.godot/imported/FierroIzq.png-cd2052621fa8485b70dc89b29bbcd47b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/boton.png"
-dest_files=["res://.godot/imported/boton.png-f352b1540d05c64b51fdd3fb51e1820d.ctex"]
+source_file="res://Sprites/FierroIzq.png"
+dest_files=["res://.godot/imported/FierroIzq.png-cd2052621fa8485b70dc89b29bbcd47b.ctex"]
 
 [params]
 

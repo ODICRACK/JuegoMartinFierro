@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dj2bfxhryngup" path="res://Scrips/menu.gd" id="1_l03gm"]
 [ext_resource type="Script" uid="uid://btsof2u5bukff" path="res://Scrips/buttonContainer.gd" id="2_4y11p"]
-[ext_resource type="Texture2D" uid="uid://ntb6l5emx3f3" path="res://Sprites/pixilart-sprite (4).png" id="2_jxnki"]
-[ext_resource type="Texture2D" uid="uid://xr304ynpsl4y" path="res://Sprites/ChatGPT Image 10 sept 2025, 09_58_40 p.m..png" id="2_sp3bm"]
+[ext_resource type="Texture2D" uid="uid://dw2ef03mwlugj" path="res://Sprites/pixilart-sprite (4).png" id="2_jxnki"]
+[ext_resource type="Texture2D" uid="uid://u1syulbv0ag5" path="res://Sprites/ChatGPT Image 10 sept 2025, 09_58_40 p.m..png" id="2_sp3bm"]
 [ext_resource type="FontFile" uid="uid://bjeipvuaso84k" path="res://Fuentes de texto/ari/ari-w9500-bold.ttf" id="3_4y11p"]
 [ext_resource type="Script" uid="uid://br4o3fo4ppcse" path="res://Scrips/button_play.gd" id="5_jwk51"]
 [ext_resource type="AudioStream" uid="uid://bb1m8qisdkneg" path="res://Sonidos/guitarra.wav" id="5_pl8sq"]
@@ -18,7 +18,7 @@
 [ext_resource type="LabelSettings" uid="uid://c7xl3dh7a486s" path="res://Recursos/RecursosDeTexto/SubTitulos.tres" id="14_dmw4f"]
 [ext_resource type="LabelSettings" uid="uid://ds8witkhs7v0u" path="res://Recursos/RecursosDeTexto/SubSubTitulo.tres" id="15_fpkfv"]
 [ext_resource type="Script" uid="uid://bv1a8si5x765y" path="res://Scrips/Volumen.gd" id="15_qboup"]
-[ext_resource type="Texture2D" uid="uid://c7bobl4fbukm6" path="res://Sprites/boton.png" id="16_7hgs6"]
+[ext_resource type="Texture2D" uid="uid://33s1pwdq1kwb" path="res://Sprites/boton.png" id="16_7hgs6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7k86"]
 draw_center = false
@@ -119,7 +119,6 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -335,6 +334,7 @@ stream = ExtResource("9_jwk51")
 bus = &"SFX"
 
 [node name="opciones" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

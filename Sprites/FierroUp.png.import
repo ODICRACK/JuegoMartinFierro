@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://33s1pwdq1kwb"
-path="res://.godot/imported/boton.png-f352b1540d05c64b51fdd3fb51e1820d.ctex"
+uid="uid://dn7lpc4mwm4gb"
+path="res://.godot/imported/FierroUp.png-38fabec982ded6d50ef71241c83f0bac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/boton.png"
-dest_files=["res://.godot/imported/boton.png-f352b1540d05c64b51fdd3fb51e1820d.ctex"]
+source_file="res://Sprites/FierroUp.png"
+dest_files=["res://.godot/imported/FierroUp.png-38fabec982ded6d50ef71241c83f0bac.ctex"]
 
 [params]
 
