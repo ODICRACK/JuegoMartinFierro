@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://c13xfncr2nb0p"]
+
+[ext_resource type="Texture2D" uid="uid://6igy5r8j0i7m" path="res://Sprites/FierroIdle.png" id="1_7ipuf"]
+[ext_resource type="Script" uid="uid://cwvnyenshjlxt" path="res://Scrips/npc.gd" id="2_jt2dd"]
+[ext_resource type="Script" uid="uid://cimbrc61ciugv" path="res://personajesRecurso.gd" id="3_di4me"]
+[ext_resource type="Texture2D" uid="uid://33s1pwdq1kwb" path="res://Sprites/boton.png" id="4_86sqj"]
+
+[sub_resource type="Resource" id="Resource_2qshb"]
+script = ExtResource("3_di4me")
+nombre = "Matias"
+cantDialogos = 1
+sprite = ExtResource("4_86sqj")
+spriteGrande = ExtResource("1_7ipuf")
+dialogos = ["oh Fierro, quiere unirte a una pequeña ronda de mate?", "hola"]
+metadata/_custom_type_script = "uid://cimbrc61ciugv"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7utl"]
+size = Vector2(35, 30)
+
+[node name="NPC1" type="Sprite2D" groups=["player"]]
+texture = ExtResource("1_7ipuf")
+hframes = 2
+script = ExtResource("2_jt2dd")
+recurso = SubResource("Resource_2qshb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 15)
+shape = SubResource("RectangleShape2D_y7utl")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var velocidad:int = 50
+@export var velocidad:int = 50
 @onready var animador = $AnimationPlayer
 
 signal OcultarMostrarSprites(correcto:int)
@@ -11,7 +11,7 @@ func _physics_process(_delta: float) -> void:
 	velocity = direccion * velocidad
 	move_and_slide()
 	
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	var accion :=Comprobador()
 
 	if accion == "Izq":

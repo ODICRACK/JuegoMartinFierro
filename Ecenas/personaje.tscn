@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://cvv4omegy17t4"]
 
 [ext_resource type="Script" uid="uid://cue07xeswgm0r" path="res://Scrips/personaje.gd" id="1_pqvt1"]
-[ext_resource type="Script" uid="uid://dw5cugq04v8c4" path="res://Ecenas/spriter.gd" id="2_1tf6u"]
+[ext_resource type="Script" uid="uid://dw5cugq04v8c4" path="res://Scrips/spriter.gd" id="2_1tf6u"]
 [ext_resource type="Texture2D" uid="uid://c2cyabnosye7f" path="res://Sprites/FierroDere.png" id="2_lf4gs"]
 [ext_resource type="Texture2D" uid="uid://6igy5r8j0i7m" path="res://Sprites/FierroIdle.png" id="3_1tf6u"]
 [ext_resource type="Texture2D" uid="uid://cj70m3ayui60m" path="res://Sprites/FierroIzq.png" id="4_3lj63"]
@@ -172,7 +172,7 @@ _data = {
 &"Up": SubResource("Animation_1tf6u")
 }
 
-[node name="Personaje" type="CharacterBody2D"]
+[node name="Personaje" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_pqvt1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

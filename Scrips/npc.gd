@@ -1,0 +1,11 @@
+extends Sprite2D
+@export var recurso:Personas
+
+signal dialogo(nombre:String, cantDialogos:int,Sprite:Texture2D,SpriteGrande:Texture2D,Dialogos)
+
+func _ready() -> void:
+	pass
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if  body.is_in_group("player"):
+		emit_signal("dialogo",recurso.nombre,recurso.cantDialogos,recurso.sprite,recurso.spriteGrande,recurso.dialogos)
+		print ("esta entrando ")
