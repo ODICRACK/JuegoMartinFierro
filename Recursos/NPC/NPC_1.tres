@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_h5v2m")
-nombre = ""
-cantDialogos = 0
-dialogos = [""]
+nombre = "Juan Moreira"
+cantDialogos = 3
+dialogos = ["¡Escuchame, Fierro! ¿No querés tirar una manito?", "nomás una de truco, sin más", "Sentate, compadre; a ver si te animás a jugarme."]
 metadata/_custom_type_script = "uid://cimbrc61ciugv"

@@ -15,7 +15,7 @@ dialogos = ["oh Fierro, quiere unirte a una pequeña ronda de mate?", "hola"]
 metadata/_custom_type_script = "uid://cimbrc61ciugv"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y7utl"]
-size = Vector2(35, 30)
+size = Vector2(48, 33)
 
 [node name="NPC1" type="Sprite2D" groups=["player"]]
 texture = ExtResource("1_7ipuf")
@@ -26,7 +26,7 @@ recurso = SubResource("Resource_2qshb")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.5, 15)
+position = Vector2(0, 16.5)
 shape = SubResource("RectangleShape2D_y7utl")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

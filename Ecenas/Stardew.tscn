@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://dwi1diu0v5dr1"]
+[gd_scene load_steps=13 format=4 uid="uid://dwi1diu0v5dr1"]
 
 [ext_resource type="PackedScene" uid="uid://cvv4omegy17t4" path="res://Ecenas/personaje.tscn" id="1_ji31u"]
 [ext_resource type="Texture2D" uid="uid://3uo5hrd5q22c" path="res://Sprites/88627.png" id="1_vlqh3"]
 [ext_resource type="Texture2D" uid="uid://cabtsi6vimcid" path="res://Sprites/vallas.png" id="2_i75gw"]
 [ext_resource type="PackedScene" uid="uid://c13xfncr2nb0p" path="res://Ecenas/npc_1.tscn" id="3_bhs61"]
+[ext_resource type="Resource" uid="uid://d36k77gmdpt3w" path="res://Recursos/NPC/NPC_3.tres" id="4_34cra"]
 [ext_resource type="PackedScene" uid="uid://cyckbs82020a0" path="res://Ecenas/dialogue_box.tscn" id="4_280yo"]
+[ext_resource type="Resource" uid="uid://cpyjvimdunsb0" path="res://Recursos/NPC/NPC_2.tres" id="5_sup6c"]
+[ext_resource type="Resource" uid="uid://ce18rd11ncty8" path="res://Recursos/NPC/NPC_1.tres" id="5_wc7ad"]
 [ext_resource type="AudioStream" uid="uid://ipujnokngdfe" path="res://Sonidos/saul.wav" id="6_m1cqc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vlqh3"]
@@ -2526,7 +2529,19 @@ tile_map_data = PackedByteArray("AADI//D/AAABAAkAAADI//H/AAABAAkAAADI//L/AAABAAk
 tile_set = SubResource("TileSet_i75gw")
 
 [node name="NPC1" parent="." instance=ExtResource("3_bhs61")]
+z_index = 1
 position = Vector2(-408, -133)
+recurso = ExtResource("4_34cra")
+
+[node name="NPC2" parent="." instance=ExtResource("3_bhs61")]
+z_index = 1
+position = Vector2(-536, -101)
+recurso = ExtResource("5_wc7ad")
+
+[node name="NPC3" parent="." instance=ExtResource("3_bhs61")]
+z_index = 1
+position = Vector2(-67, 73)
+recurso = ExtResource("5_sup6c")
 
 [node name="Personaje" parent="." instance=ExtResource("1_ji31u")]
 position = Vector2(73, 14)
@@ -2550,3 +2565,5 @@ autoplay = true
 bus = &"Music"
 
 [connection signal="dialogo" from="NPC1" to="Personaje/dialogueBox" method="_on_npc_dialogo"]
+[connection signal="dialogo" from="NPC2" to="Personaje/dialogueBox" method="_on_npc_dialogo"]
+[connection signal="dialogo" from="NPC3" to="Personaje/dialogueBox" method="_on_npc_dialogo"]

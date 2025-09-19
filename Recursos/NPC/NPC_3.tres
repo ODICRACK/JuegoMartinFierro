@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Personas" load_steps=2 format=3 uid="uid://d36k77gmdpt3w"]
+
+[ext_resource type="Script" uid="uid://cimbrc61ciugv" path="res://personajesRecurso.gd" id="1_w41w3"]
+
+[resource]
+script = ExtResource("1_w41w3")
+nombre = "gaucho matrero"
+cantDialogos = 0
+dialogos = ["¿Qué vientos te trajeron por aquí, Fierro?", "¿No te querés venir a la ronda de mate? Capaz hasta te hacemos tirar una tonada.", "Si querés pasar por la pulpería está ahí al lao; dentro está todo muerto", "capaz te necesitan más por allá que por acá."]
+metadata/_custom_type_script = "uid://cimbrc61ciugv"

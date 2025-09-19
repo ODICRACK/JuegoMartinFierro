@@ -47,6 +47,7 @@ theme_override_colors/font_color = Color(0.699348, 0.409318, 0.269991, 1)
 theme_override_fonts/font = ExtResource("3_e1v4e")
 theme_override_font_sizes/font_size = 18
 text = "ndfnbalvbajñabdknvadfvodflkndafvlkndfv"
+autowrap_mode = 2
 
 [node name="Control" type="Control" parent="."]
 clip_contents = true
