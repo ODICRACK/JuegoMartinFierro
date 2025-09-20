@@ -1,4 +1,5 @@
 extends Node
+var moverse:bool = true
 var config_file_path := "user://config.json"
 var settings := {
 	"audio": {

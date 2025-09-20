@@ -1,10 +1,13 @@
 extends Sprite2D
 @export var recurso:Personas
-
+@onready var animador = $AnimationPlayer
 signal dialogo(nombre:String, cantDialogos:int,Sprite:Texture2D,SpriteGrande:Texture2D,Dialogos)
 
 func _ready() -> void:
-	pass
+	animador.play(recurso.animado)
+	texture = recurso.sprite
+	hframes = recurso.hframes
+	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if  body.is_in_group("player"):
 		emit_signal("dialogo",recurso.nombre,recurso.cantDialogos,recurso.sprite,recurso.spriteGrande,recurso.dialogos)

@@ -183,11 +183,11 @@ shape = SubResource("RectangleShape2D_1fmvu")
 script = ExtResource("2_1tf6u")
 
 [node name="FierroDere" type="Sprite2D" parent="Spriter"]
-visible = false
 texture = ExtResource("2_lf4gs")
 hframes = 4
 
 [node name="FierroIdle" type="Sprite2D" parent="Spriter"]
+visible = false
 texture = ExtResource("3_1tf6u")
 hframes = 2
 

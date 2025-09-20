@@ -8,8 +8,9 @@ func _physics_process(_delta: float) -> void:
 	
 	var direccion = Input.get_vector("Izq","Dere","Arriba","Abajo")
 	
-	velocity = direccion * velocidad
-	move_and_slide()
+	if ConfigManager.moverse == true:
+		velocity = direccion * velocidad
+		move_and_slide()
 	
 func _input(_event: InputEvent) -> void:
 	var accion :=Comprobador()

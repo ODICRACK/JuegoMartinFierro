@@ -1,15 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://c13xfncr2nb0p"]
+[gd_scene load_steps=12 format=3 uid="uid://c13xfncr2nb0p"]
 
 [ext_resource type="Texture2D" uid="uid://6igy5r8j0i7m" path="res://Sprites/FierroIdle.png" id="1_7ipuf"]
+[ext_resource type="Texture2D" uid="uid://b1xmystuoy78x" path="res://Sprites/ayudante.png" id="1_86sqj"]
 [ext_resource type="Script" uid="uid://cwvnyenshjlxt" path="res://Scrips/npc.gd" id="2_jt2dd"]
-[ext_resource type="Script" uid="uid://cimbrc61ciugv" path="res://personajesRecurso.gd" id="3_di4me"]
+[ext_resource type="Script" uid="uid://cimbrc61ciugv" path="res://Scrips/personajesRecurso.gd" id="3_di4me"]
 [ext_resource type="Texture2D" uid="uid://33s1pwdq1kwb" path="res://Sprites/boton.png" id="4_86sqj"]
 
 [sub_resource type="Resource" id="Resource_2qshb"]
 script = ExtResource("3_di4me")
 nombre = "Matias"
 cantDialogos = 1
+hframes = 0
 sprite = ExtResource("4_86sqj")
+animado = ""
 spriteGrande = ExtResource("1_7ipuf")
 dialogos = ["oh Fierro, quiere unirte a una pequeña ronda de mate?", "hola"]
 metadata/_custom_type_script = "uid://cimbrc61ciugv"
@@ -17,8 +20,65 @@ metadata/_custom_type_script = "uid://cimbrc61ciugv"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y7utl"]
 size = Vector2(48, 33)
 
+[sub_resource type="Animation" id="Animation_2qshb"]
+resource_name = "mattera"
+length = 4.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.5, 2, 2.5, 3, 3.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_nsiv6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_2i2x6"]
+resource_name = "ayudante"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_86sqj"]
+_data = {
+&"RESET": SubResource("Animation_nsiv6"),
+&"ayudante": SubResource("Animation_2i2x6"),
+&"mattera": SubResource("Animation_2qshb")
+}
+
 [node name="NPC1" type="Sprite2D" groups=["player"]]
-texture = ExtResource("1_7ipuf")
+texture = ExtResource("1_86sqj")
 hframes = 2
 script = ExtResource("2_jt2dd")
 recurso = SubResource("Resource_2qshb")
@@ -28,5 +88,10 @@ recurso = SubResource("Resource_2qshb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 16.5)
 shape = SubResource("RectangleShape2D_y7utl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_86sqj")
+}
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

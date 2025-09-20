@@ -1,10 +1,16 @@
-[gd_resource type="Resource" script_class="Personas" load_steps=2 format=3 uid="uid://ce18rd11ncty8"]
+[gd_resource type="Resource" script_class="Personas" load_steps=4 format=3 uid="uid://ce18rd11ncty8"]
 
-[ext_resource type="Script" uid="uid://cimbrc61ciugv" path="res://personajesRecurso.gd" id="1_h5v2m"]
+[ext_resource type="Script" uid="uid://cimbrc61ciugv" path="res://Scrips/personajesRecurso.gd" id="1_4vps8"]
+[ext_resource type="Texture2D" uid="uid://budqqya3yefix" path="res://Sprites/cartas.png" id="2_etapp"]
+[ext_resource type="Texture2D" uid="uid://kdr6inhwftef" path="res://Sprites/Captura de pantalla 2025-09-19 203612.png" id="3_etapp"]
 
 [resource]
-script = ExtResource("1_h5v2m")
+script = ExtResource("1_4vps8")
 nombre = "Juan Moreira"
 cantDialogos = 3
+hframes = 1
+sprite = ExtResource("2_etapp")
+animado = ""
+spriteGrande = ExtResource("3_etapp")
 dialogos = ["¡Escuchame, Fierro! ¿No querés tirar una manito?", "nomás una de truco, sin más", "Sentate, compadre; a ver si te animás a jugarme."]
 metadata/_custom_type_script = "uid://cimbrc61ciugv"

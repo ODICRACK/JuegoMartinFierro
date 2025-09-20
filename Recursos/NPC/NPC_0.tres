@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Personas" load_steps=2 format=3 uid="uid://dy4bbbncr1ujx"]
 
-[ext_resource type="Script" uid="uid://cimbrc61ciugv" path="res://personajesRecurso.gd" id="1_pd8yu"]
+[ext_resource type="Script" uid="uid://cimbrc61ciugv" path="res://Scrips/personajesRecurso.gd" id="1_pd8yu"]
 
 [resource]
 script = ExtResource("1_pd8yu")

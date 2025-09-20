@@ -17,6 +17,7 @@ func _on_npc_dialogo(Nom:String, _cantDialogos:int, _Sprite:Texture2D, SpriteGra
 	dialogos = _Dialogos
 	current_index = 0
 	_show_dialogo()
+	ConfigManager.moverse = false
 
 func _show_dialogo() -> void:
 	if current_index < dialogos.size():
@@ -25,6 +26,7 @@ func _show_dialogo() -> void:
 	else:
 		# No hay más diálogos
 		visible = false
+		ConfigManager.moverse = true
 
 func _start_typing(linea: String) -> void:
 	typing = true
