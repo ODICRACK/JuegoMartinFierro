@@ -211,4 +211,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_1fmvu")
 }
 
+[connection signal="MostrarCorrecto" from="." to="Spriter" method="_on_personaje_mostrar_correcto"]
 [connection signal="OcultarMostrarSprites" from="." to="Spriter" method="_on_personaje_ocultar_mostrar_sprites"]

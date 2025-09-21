@@ -1,10 +1,16 @@
-[gd_resource type="Resource" script_class="Personas" load_steps=2 format=3 uid="uid://dy4bbbncr1ujx"]
+[gd_resource type="Resource" script_class="Personas" load_steps=4 format=3 uid="uid://dy4bbbncr1ujx"]
 
 [ext_resource type="Script" uid="uid://cimbrc61ciugv" path="res://Scrips/personajesRecurso.gd" id="1_pd8yu"]
+[ext_resource type="Texture2D" uid="uid://dlk4ovhmnitcj" path="res://Sprites/gobierno.png" id="2_1ue2w"]
+[ext_resource type="Texture2D" uid="uid://lvlr1jsps5qk" path="res://Sprites/gob213.png" id="3_1ue2w"]
 
 [resource]
 script = ExtResource("1_pd8yu")
-nombre = ""
+nombre = "Partida"
 cantDialogos = 0
-dialogos = [""]
+hframes = 2
+sprite = ExtResource("2_1ue2w")
+animado = "ayudante"
+spriteGrande = ExtResource("3_1ue2w")
+dialogos = ["¡Alto ahí! ¿Quién es el vago que anda tocando por la pulpería?", "Con tanto tiempo para vaguear no habrá casa que no lo señale. Como ciudadanos desempleados de esta nación, vendrán conmigo:", "el Estado provee plaza en la frontera para que sirvan y luchen contra los indios.", "Se les dará paga justa y orden del Gobierno.", "No habrá rebeldía: somos la ley, y deberán acatar sin resistencia."]
 metadata/_custom_type_script = "uid://cimbrc61ciugv"

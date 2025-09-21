@@ -34,3 +34,20 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		await tween.finished
 		await get_tree().create_timer(1.0).timeout
 		get_tree().change_scene_to_file("res://Ecenas/Bar.tscn")
+
+
+func _on_dialogue_box_termine() -> void:
+	ConfigManager.moverse=false
+	await get_tree().create_timer(1.5).timeout
+	var tween = get_tree().create_tween()
+	tween.tween_property(fade_rect, "modulate:a", 1.0, 3.0) # 1 seg de duración
+	# Usamos await para esperar a que termine
+	await tween.finished
+	get_tree().change_scene_to_file("res://Ecenas/pokemon.tscn")
+
+func degradado()-> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(fade_rect, "modulate:a", 1.0, 2.6)
+func agradado()-> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(fade_rect, "modulate:a", 0.0, 3.0)

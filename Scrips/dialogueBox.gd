@@ -5,6 +5,8 @@ extends Control
 @onready var nombre = $Nombre
 @onready var sound = $Sans
 
+signal termine
+
 var dialogos: Array = []
 var current_index: int = 0
 var typing: bool = false
@@ -27,6 +29,7 @@ func _show_dialogo() -> void:
 		# No hay más diálogos
 		visible = false
 		ConfigManager.moverse = true
+		emit_signal("termine")
 
 func _start_typing(linea: String) -> void:
 	typing = true

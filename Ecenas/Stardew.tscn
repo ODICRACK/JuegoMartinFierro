@@ -2585,7 +2585,6 @@ velocidad = 150
 zoom = Vector2(4, 4)
 
 [node name="dialogueBox" parent="Personaje" instance=ExtResource("4_280yo")]
-visible = false
 z_index = 5
 offset_left = -160.0
 offset_top = -90.0

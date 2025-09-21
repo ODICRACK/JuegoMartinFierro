@@ -6,5 +6,7 @@
 script = ExtResource("1_p06fy")
 nombre = "..."
 cantDialogos = 1
+hframes = 0
+animado = ""
 dialogos = ["oye esta carpa esta ocupada"]
 metadata/_custom_type_script = "uid://cimbrc61ciugv"
