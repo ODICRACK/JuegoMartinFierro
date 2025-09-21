@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cgfjemoqlmi4c"]
+[gd_scene load_steps=32 format=3 uid="uid://cgfjemoqlmi4c"]
 
 [ext_resource type="Script" uid="uid://dj2bfxhryngup" path="res://Scrips/menu.gd" id="1_l03gm"]
 [ext_resource type="Script" uid="uid://btsof2u5bukff" path="res://Scrips/buttonContainer.gd" id="2_4y11p"]
@@ -19,6 +19,7 @@
 [ext_resource type="LabelSettings" uid="uid://ds8witkhs7v0u" path="res://Recursos/RecursosDeTexto/SubSubTitulo.tres" id="15_fpkfv"]
 [ext_resource type="Script" uid="uid://bv1a8si5x765y" path="res://Scrips/Volumen.gd" id="15_qboup"]
 [ext_resource type="Texture2D" uid="uid://33s1pwdq1kwb" path="res://Sprites/boton.png" id="16_7hgs6"]
+[ext_resource type="Script" uid="uid://41na5pkl6ai" path="res://Ecenas/troleo.gd" id="20_2gbjy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7k86"]
 draw_center = false
@@ -577,6 +578,7 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_qboup")
 text = "No tocar"
 icon_alignment = 1
 expand_icon = true
+script = ExtResource("20_2gbjy")
 
 [connection signal="mouse_entered" from="VBoxContainer/ContenedorBotonPlay/ButtonPlay" to="VBoxContainer/ContenedorBotonPlay/Control" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/ContenedorBotonPlay/ButtonPlay" to="VBoxContainer/ContenedorBotonPlay/Control" method="_on_button_mouse_exited"]
@@ -593,3 +595,4 @@ expand_icon = true
 [connection signal="value_changed" from="opciones/opciones de lado/contenedorOpciones/VolumenContenedor/Musica" to="opciones/opciones de lado/contenedorOpciones/VolumenContenedor" method="_on_music_volume_changed"]
 [connection signal="value_changed" from="opciones/opciones de lado/contenedorOpciones/VolumenContenedor/Efectos" to="opciones/opciones de lado/contenedorOpciones/VolumenContenedor" method="_on_sfx_volume_changed"]
 [connection signal="pressed" from="opciones/retroceder" to="." method="_on_button_options_pressed"]
+[connection signal="pressed" from="opciones/troleo" to="opciones/troleo" method="_on_pressed"]

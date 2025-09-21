@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1ydm7rl0r27v"]
+
+[ext_resource type="VideoStream" uid="uid://bqky8qpougasw" path="res://Videos/Gaby ‐ Hecho con Clipchamp.ogv" id="1_r6r3j"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer"]
+offset_left = 309.0
+offset_top = -283.0
+offset_right = 1029.0
+offset_bottom = 997.0
+stream = ExtResource("1_r6r3j")
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(340, 636)
+zoom = Vector2(0.5, 0.5)
