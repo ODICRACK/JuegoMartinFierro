@@ -14,7 +14,7 @@
 [ext_resource type="Resource" uid="uid://dpiwpbcu5o5xd" path="res://Recursos/NPC/NPC_4.tres" id="6_amxbh"]
 [ext_resource type="AudioStream" uid="uid://ipujnokngdfe" path="res://Sonidos/saul.wav" id="6_m1cqc"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vlqh3"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7q1u7"]
 texture = ExtResource("1_vlqh3")
 12:12/0 = 0
 14:12/0 = 0
@@ -2414,7 +2414,7 @@ texture = ExtResource("1_vlqh3")
 40:0/0/texture_origin = Vector2i(0, 10)
 40:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.91378, -11.3311, -8, -2.51802, 8, -2.33816, 7.73392, -10.9714)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_280yo"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gojeh"]
 texture = ExtResource("2_i75gw")
 margins = Vector2i(12, 3)
 10:2/size_in_atlas = Vector2i(1, 2)
@@ -2503,8 +2503,8 @@ terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 terrain_set_1/mode = 0
 terrain_set_1/terrain_0/name = "vayas 0"
 terrain_set_1/terrain_0/color = Color(0.847543, 0.620684, 0.379913, 1)
-sources/0 = SubResource("TileSetAtlasSource_vlqh3")
-sources/2 = SubResource("TileSetAtlasSource_280yo")
+sources/0 = SubResource("TileSetAtlasSource_7q1u7")
+sources/2 = SubResource("TileSetAtlasSource_gojeh")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r6te0"]
 radius = 19.2354

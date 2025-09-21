@@ -2,7 +2,10 @@ extends CharacterBody2D
 
 @export var velocidad:int = 50
 @onready var animador = $AnimationPlayer
+@onready var camara = $Camera2D
 
+func _ready() -> void:
+	camara.position = Vector2(0,0)
 signal OcultarMostrarSprites(correcto:int)
 func _physics_process(_delta: float) -> void:
 	
