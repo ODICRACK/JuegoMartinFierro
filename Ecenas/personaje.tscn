@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cvv4omegy17t4"]
+[gd_scene load_steps=19 format=3 uid="uid://cvv4omegy17t4"]
 
 [ext_resource type="Script" uid="uid://cue07xeswgm0r" path="res://Scrips/personaje.gd" id="1_pqvt1"]
 [ext_resource type="Script" uid="uid://dw5cugq04v8c4" path="res://Scrips/spriter.gd" id="2_1tf6u"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cj70m3ayui60m" path="res://Sprites/FierroIzq.png" id="4_3lj63"]
 [ext_resource type="Texture2D" uid="uid://bihuofdm618wi" path="res://Sprites/FierroRun.png" id="5_p0mn3"]
 [ext_resource type="Texture2D" uid="uid://dn7lpc4mwm4gb" path="res://Sprites/FierroUp.png" id="6_ls60t"]
+[ext_resource type="Script" uid="uid://dcuyilpxpxbsn" path="res://Ecenas/inventory.gd" id="8_1tf6u"]
+[ext_resource type="Script" uid="uid://daqu7aqo64w4j" path="res://Ecenas/inventory_ui.gd" id="9_3lj63"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1fmvu"]
 size = Vector2(12, 16)
@@ -172,6 +174,9 @@ _data = {
 &"Up": SubResource("Animation_1tf6u")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lf4gs"]
+size = Vector2(18, 33)
+
 [node name="Personaje" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_pqvt1")
 
@@ -211,4 +216,36 @@ libraries = {
 &"": SubResource("AnimationLibrary_1fmvu")
 }
 
+[node name="Inventory" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("8_1tf6u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_lf4gs")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InventoryUI" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -124.0
+offset_top = -80.0
+offset_right = 124.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("9_3lj63")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/InventoryUI"]
+layout_mode = 2
+
 [connection signal="OcultarMostrarSprites" from="." to="Spriter" method="_on_personaje_ocultar_mostrar_sprites"]
+[connection signal="area_entered" from="Inventory" to="Inventory" method="_on_area_entered"]
+[connection signal="item_added" from="Inventory" to="CanvasLayer/InventoryUI" method="_on_inventory_item_added"]
+[connection signal="item_consumed" from="Inventory" to="CanvasLayer/InventoryUI" method="_on_inventory_item_consumed"]
+[connection signal="inventory_item_ui_selected" from="CanvasLayer/InventoryUI" to="Inventory" method="_on_inventory_ui_inventory_item_ui_selected"]
+[connection signal="mouse_entered" from="CanvasLayer/InventoryUI" to="." method="_on_inventory_ui_mouse_entered"]

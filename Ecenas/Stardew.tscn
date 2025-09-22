@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://dwi1diu0v5dr1"]
+[gd_scene load_steps=13 format=4 uid="uid://dwi1diu0v5dr1"]
 
 [ext_resource type="PackedScene" uid="uid://cvv4omegy17t4" path="res://Ecenas/personaje.tscn" id="1_ji31u"]
 [ext_resource type="Texture2D" uid="uid://3uo5hrd5q22c" path="res://Sprites/88627.png" id="1_vlqh3"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://c13xfncr2nb0p" path="res://Ecenas/npc_1.tscn" id="3_bhs61"]
 [ext_resource type="PackedScene" uid="uid://cyckbs82020a0" path="res://Ecenas/dialogue_box.tscn" id="4_280yo"]
 [ext_resource type="AudioStream" uid="uid://ipujnokngdfe" path="res://Sonidos/saul.wav" id="6_m1cqc"]
+[ext_resource type="Texture2D" uid="uid://33s1pwdq1kwb" path="res://Sprites/boton.png" id="7_34cra"]
+[ext_resource type="PackedScene" uid="uid://bj7uevq0kvoiw" path="res://Ecenas/item.tscn" id="7_ri4gn"]
+[ext_resource type="Texture2D" uid="uid://dn7lpc4mwm4gb" path="res://Sprites/FierroUp.png" id="9_sup6c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vlqh3"]
 texture = ExtResource("1_vlqh3")
@@ -2548,5 +2551,21 @@ grow_vertical = 0
 stream = ExtResource("6_m1cqc")
 autoplay = true
 bus = &"Music"
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="Item" parent="Items" instance=ExtResource("7_ri4gn")]
+position = Vector2(139, 113)
+texture = ExtResource("7_34cra")
+
+[node name="Item2" parent="Items" instance=ExtResource("7_ri4gn")]
+position = Vector2(0, 109)
+texture = ExtResource("2_i75gw")
+type = 1
+
+[node name="Item3" parent="Items" instance=ExtResource("7_ri4gn")]
+position = Vector2(86, 122)
+texture = ExtResource("9_sup6c")
+type = 2
 
 [connection signal="dialogo" from="NPC1" to="Personaje/dialogueBox" method="_on_npc_dialogo"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj7uevq0kvoiw"]
+
+[ext_resource type="Script" uid="uid://bgld5oqql5ipy" path="res://Ecenas/item.gd" id="1_gbfkx"]
+[ext_resource type="Texture2D" uid="uid://33s1pwdq1kwb" path="res://Sprites/boton.png" id="2_1qqu8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34cra"]
+size = Vector2(14, 9)
+
+[node name="Item" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_gbfkx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_34cra")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1qqu8")
